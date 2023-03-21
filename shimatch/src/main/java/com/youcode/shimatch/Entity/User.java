@@ -65,6 +65,18 @@ public class User {
     @Column(name = "favorite_foot")
     private FavoriteFoot favoriteFoot;
 
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    private Team team;
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
     public FavoriteFoot getFavoriteFoot() {
         return favoriteFoot;
     }
