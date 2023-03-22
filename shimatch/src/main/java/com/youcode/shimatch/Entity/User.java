@@ -196,4 +196,26 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", lastname='" + lastname + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", address=" + address +
+                ", dateOfBirth=" + dateOfBirth +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", photo='" + photo + '\'' +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", role=" + role +
+                ", poste=" + poste +
+                ", favoriteFoot=" + favoriteFoot +
+                ", team=" + team +
+                '}';
+    }
 }
