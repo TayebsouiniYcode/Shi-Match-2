@@ -8,6 +8,7 @@ import java.io.Serializable;
  * A DTO for the {@link com.youcode.shimatch.Entity.Address} entity
  */
 @Data
+
 public class AddressDto implements Serializable {
     private final Long id;
     private final String country;

@@ -1,6 +1,8 @@
 package com.youcode.shimatch.service.implementation;
 
+import com.youcode.shimatch.Entity.Address;
 import com.youcode.shimatch.Entity.User;
+import com.youcode.shimatch.dto.AddressDto;
 import com.youcode.shimatch.dto.UserDto;
 import com.youcode.shimatch.repository.UserRepository;
 import com.youcode.shimatch.service.AuthService;
@@ -25,8 +27,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public UserDto regiter(UserDto userDto) {
         //TODO check the userDto if valide
-
-
+        //Validation manuel de userDTO
         User user = modelMapper.map(userDto, User.class);
         userRepository.save(user);
         return userDto;
