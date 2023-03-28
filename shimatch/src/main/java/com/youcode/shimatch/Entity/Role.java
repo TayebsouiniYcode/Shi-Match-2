@@ -1,9 +1,15 @@
 package com.youcode.shimatch.Entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Entity
 public class Role {
+
+    public Role(Long id) {
+        this.id = id;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -14,6 +20,10 @@ public class Role {
 
     @Column(name = "description")
     private String description;
+
+    public Role() {
+
+    }
 
     public String getDescription() {
         return description;

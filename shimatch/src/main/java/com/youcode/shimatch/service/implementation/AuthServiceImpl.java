@@ -1,6 +1,7 @@
 package com.youcode.shimatch.service.implementation;
 
 import com.youcode.shimatch.Entity.Address;
+import com.youcode.shimatch.Entity.Role;
 import com.youcode.shimatch.Entity.User;
 import com.youcode.shimatch.dto.AddressDto;
 import com.youcode.shimatch.dto.UserDto;
@@ -11,7 +12,6 @@ import com.youcode.shimatch.utils.ResponseMessage;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Service
@@ -29,6 +29,7 @@ public class AuthServiceImpl implements AuthService {
         //TODO check the userDto if valide
         //Validation manuel de userDTO
         User user = modelMapper.map(userDto, User.class);
+        user.setRole(new Role(1L));
         userRepository.save(user);
         return userDto;
     }
