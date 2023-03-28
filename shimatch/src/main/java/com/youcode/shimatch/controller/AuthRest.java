@@ -1,12 +1,11 @@
 package com.youcode.shimatch.controller;
 
+import com.youcode.shimatch.Entity.User;
 import com.youcode.shimatch.dto.UserDto;
 import com.youcode.shimatch.service.AuthService;
+import com.youcode.shimatch.utils.LoginForm;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -19,7 +18,12 @@ public class AuthRest {
     }
 
     @PostMapping("/register")
-    public UserDto register(@RequestBody @Valid UserDto userDto) {
+    public UserDto register(@RequestBody @Valid UserDto userDto) throws Exception {
         return this.authService.regiter(userDto);
+    }
+
+    @GetMapping("/login")
+    public User login(@RequestBody @Valid LoginForm loginForm) throws Exception {
+        return this.authService.login(loginForm);
     }
 }

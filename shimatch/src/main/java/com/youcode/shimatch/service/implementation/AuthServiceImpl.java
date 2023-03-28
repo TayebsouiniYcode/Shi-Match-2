@@ -1,42 +1,54 @@
 package com.youcode.shimatch.service.implementation;
 
-import com.youcode.shimatch.Entity.Address;
 import com.youcode.shimatch.Entity.Role;
 import com.youcode.shimatch.Entity.User;
-import com.youcode.shimatch.dto.AddressDto;
 import com.youcode.shimatch.dto.UserDto;
 import com.youcode.shimatch.repository.UserRepository;
 import com.youcode.shimatch.service.AuthService;
+import com.youcode.shimatch.service.RoleService;
 import com.youcode.shimatch.utils.LoginForm;
 import com.youcode.shimatch.utils.ResponseMessage;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
+    private final RoleService roleService;
 
-    public AuthServiceImpl(UserRepository userRepository, ModelMapper modelMapper) {
+    public AuthServiceImpl(UserRepository userRepository, ModelMapper modelMapper, RoleService roleService) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
+        this.roleService = roleService;
     }
 
     @Override
-    public UserDto regiter(UserDto userDto) {
+    public UserDto regiter(UserDto userDto) throws Exception {
         //TODO check the userDto if valide
         //Validation manuel de userDTO
         User user = modelMapper.map(userDto, User.class);
-        user.setRole(new Role(1L));
+        Role role = roleService.getRoleById(2L);
+        user.setRole(role);
         userRepository.save(user);
         return userDto;
     }
 
     @Override
-    public UserDto login(LoginForm loginForm) {
-        return null;
+    public User login(LoginForm loginForm) throws Exception {
+        Optional<User>  optionalUser = userRepository.findByEmail(loginForm.getEmail());
+        if (optionalUser.isPresent()) {
+            if (optionalUser.get().getPassword().equals(loginForm.getPassword())) {
+                return optionalUser.get();
+            } else {
+                throw  new Exception("Password incorrect");
+            }
+        } else {
+            throw new Exception("User n'exist pas");
+        }
     }
 
     @Override
