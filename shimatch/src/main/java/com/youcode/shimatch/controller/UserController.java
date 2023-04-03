@@ -5,6 +5,8 @@ import com.youcode.shimatch.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -22,5 +24,10 @@ public class UserController {
     @DeleteMapping("/delete/{id}")
     public int deleteUser(@PathVariable("id") Long id) throws  Exception {
         return userService.deleteUser(id);
+    }
+
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
     }
 }
