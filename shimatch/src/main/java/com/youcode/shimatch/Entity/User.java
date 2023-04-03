@@ -48,7 +48,7 @@ public class User {
     @Column(name = "height")
     private Integer height;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "role_id")
     private Role role;
 

@@ -16,23 +16,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/auth")
 public class AuthRest {
-    /*
-     private final AuthService authService;
-
-    public AuthRest(AuthService authService) {
-        this.authService = authService;
-    }
-
-    @PostMapping("/register")
-    public UserDto register(@RequestBody @Valid UserDto userDto) throws Exception {
-        return this.authService.regiter(userDto);
-    }
-
-    @GetMapping("/login")
-    public User login(@RequestBody @Valid LoginForm loginForm) throws Exception {
-        return this.authService.login(loginForm);
-    }
-    */
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
     private final JwtUtils jwtUtils;

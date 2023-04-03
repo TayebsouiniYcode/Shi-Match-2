@@ -23,4 +23,8 @@ public interface UserService {
     Role getRoleByName(String role_name);
 
     User save ( User user );
+
+    User updateUser(User user, Long id) throws Exception;
+
+    int deleteUser(Long id);
 }
