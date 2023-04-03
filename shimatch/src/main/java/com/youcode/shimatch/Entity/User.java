@@ -2,27 +2,22 @@ package com.youcode.shimatch.Entity;
 
 import com.youcode.shimatch.enums.FavoriteFoot;
 import com.youcode.shimatch.enums.Poste;
-import jakarta.persistence.*;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 public class User {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    @JdbcTypeCode(SqlTypes.INTEGER)
     private Long id;
 
     @Column(name = "lastname", length = 50)
     private String lastname;
 
     @Column(name = "firstname", length = 50)
-    @JdbcTypeCode(SqlTypes.CHAR)
     private String firstname;
 
     @ManyToOne

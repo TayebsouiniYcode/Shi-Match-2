@@ -1,6 +1,7 @@
 package com.youcode.shimatch.Entity;
 
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 @Entity
 public class Address {
@@ -20,6 +21,7 @@ public class Address {
 
     @Column(name = "zip_code")
     private String zipCode;
+
 
     public String getAddress() {
         return address;

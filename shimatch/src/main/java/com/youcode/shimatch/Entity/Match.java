@@ -1,7 +1,7 @@
 package com.youcode.shimatch.Entity;
 
-import jakarta.persistence.*;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -31,6 +31,7 @@ public class Match {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "stadium_id")
     private Stadium stadium;
+
 
     public Team getTeam2() {
         return team2;

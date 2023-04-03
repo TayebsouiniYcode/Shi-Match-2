@@ -1,7 +1,10 @@
 package com.youcode.shimatch.Entity;
 
-import jakarta.persistence.*;
 
+import org.springframework.data.annotation.*;
+
+import javax.persistence.*;
+import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
 

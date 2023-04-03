@@ -6,11 +6,11 @@ import com.youcode.shimatch.Entity.Team;
 import com.youcode.shimatch.Entity.User;
 import com.youcode.shimatch.enums.FavoriteFoot;
 import com.youcode.shimatch.enums.Poste;
-import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 

@@ -39,17 +39,9 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public User login(LoginForm loginForm) throws Exception {
-        Optional<User>  optionalUser = userRepository.findByEmail(loginForm.getEmail());
-        if (optionalUser.isPresent()) {
-            if (optionalUser.get().getPassword().equals(loginForm.getPassword())) {
-                return optionalUser.get();
-            } else {
-                throw  new Exception("Password incorrect");
-            }
-        } else {
-            throw new Exception("User n'exist pas");
-        }
+        return null;
     }
+
 
     @Override
     public UserDto updateUser(UserDto userDto) {
