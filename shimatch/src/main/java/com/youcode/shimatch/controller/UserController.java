@@ -28,6 +28,7 @@ public class UserController {
 
     @GetMapping("/users")
     public List<User> getAllUsers() {
+        //test
         return userService.getAllUsers();
     }
 }
