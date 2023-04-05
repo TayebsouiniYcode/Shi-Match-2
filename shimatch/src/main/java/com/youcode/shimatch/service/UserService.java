@@ -27,4 +27,6 @@ public interface UserService {
     User updateUser(User user, Long id) throws Exception;
 
     int deleteUser(Long id);
+
+    Optional<User> findById(Long id);
 }

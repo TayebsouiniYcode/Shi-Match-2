@@ -1,6 +1,7 @@
 package com.youcode.shimatch.service;
 
 import com.youcode.shimatch.Entity.Team;
+import com.youcode.shimatch.utils.JoinPlayerToTeam;
 
 import java.util.List;
 
@@ -10,4 +11,6 @@ public interface TeamService {
     Team getTeamById(Long id) throws Exception;
     int deleteTeam(Long id) throws Exception;
     List<Team> getAllTeams();
+
+    Team addPlayerToTeam(JoinPlayerToTeam joinPlayerToTeam) throws Exception;
 }

@@ -2,6 +2,7 @@ package com.youcode.shimatch.controller;
 
 import com.youcode.shimatch.Entity.Team;
 import com.youcode.shimatch.service.TeamService;
+import com.youcode.shimatch.utils.JoinPlayerToTeam;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,7 +38,11 @@ public class TeamController {
 
     @PostMapping("/create")
     public Team createTeam(@RequestBody Team team) throws Exception {
-
         return teamService.createTeam(team);
+    }
+
+    @PostMapping("/addPlayer")
+    public Team addPlayerToTeam(@RequestBody JoinPlayerToTeam joinPlayerToTeam) throws Exception {
+        return teamService.addPlayerToTeam(joinPlayerToTeam);
     }
 }

@@ -1,8 +1,11 @@
 package com.youcode.shimatch.service.implementation;
 
 import com.youcode.shimatch.Entity.Team;
+import com.youcode.shimatch.Entity.User;
 import com.youcode.shimatch.repository.TeamRepository;
 import com.youcode.shimatch.service.TeamService;
+import com.youcode.shimatch.service.UserService;
+import com.youcode.shimatch.utils.JoinPlayerToTeam;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,9 +14,11 @@ import java.util.Optional;
 @Service
 public class TeamServiceImpl implements TeamService {
     private final TeamRepository teamRepository;
+    private final UserService userService;
 
-    public TeamServiceImpl(TeamRepository teamRepository) {
+    public TeamServiceImpl(TeamRepository teamRepository, UserService userService) {
         this.teamRepository = teamRepository;
+        this.userService = userService;
     }
 
     @Override
@@ -72,5 +77,19 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public List<Team> getAllTeams() {
         return teamRepository.findAll();
+    }
+
+    @Override
+    public Team addPlayerToTeam(JoinPlayerToTeam joinPlayerToTeam) throws Exception {
+        Optional<User> userOptional = userService.findById(joinPlayerToTeam.getId_user());
+        Optional<Team> teamOptional = teamRepository.findById(joinPlayerToTeam.getId_team());
+
+        if (!userOptional.isPresent()) throw new Exception("User not found in database");
+        if (!teamOptional.isPresent()) throw new Exception("Team not found in database");
+
+        teamOptional.get().getUsers().add(userOptional.get());
+        System.out.println(teamOptional.get().toString());
+        teamRepository.save(teamOptional.get());
+        return teamOptional.get();
     }
 }

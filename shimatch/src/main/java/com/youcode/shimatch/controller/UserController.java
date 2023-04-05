@@ -28,7 +28,6 @@ public class UserController {
 
     @GetMapping("/users")
     public List<User> getAllUsers() {
-        /DGF
         //test
         return userService.getAllUsers();
     }
