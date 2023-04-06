@@ -9,6 +9,7 @@ import com.youcode.shimatch.repository.RoleRepository;
 import com.youcode.shimatch.repository.UserRepository;
 import com.youcode.shimatch.service.UserService;
 import com.youcode.shimatch.utils.LoginForm;
+import com.youcode.shimatch.utils.UpdateRoleRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -201,5 +202,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> findById(Long id) {
         return userRepository.findById(id);
+    }
+
+    @Override
+    public User updateUserRole(UpdateRoleRequest updateRoleRequest) throws Exception {
+        Optional<User> userOptional = userRepository.findById(updateRoleRequest.getId_user());
+        Optional<Role> roleOptional = roleRepository.findRoleById(updateRoleRequest.getId_role());
+
+        if (userOptional.isEmpty()) throw new Exception("User not found in database");
+        if (roleOptional.isEmpty()) throw new Exception("Role not found in database");
+
+        userOptional.get().setRole(roleOptional.get());
+        userRepository.save(userOptional.get());
+        return userOptional.get();
     }
 }

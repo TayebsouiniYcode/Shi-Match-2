@@ -4,6 +4,7 @@ import com.youcode.shimatch.Entity.Role;
 import com.youcode.shimatch.Entity.User;
 import com.youcode.shimatch.dto.UserDto;
 import com.youcode.shimatch.utils.LoginForm;
+import com.youcode.shimatch.utils.UpdateRoleRequest;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
@@ -29,4 +30,6 @@ public interface UserService {
     int deleteUser(Long id);
 
     Optional<User> findById(Long id);
+
+    User updateUserRole(UpdateRoleRequest updateRoleRequest) throws Exception;
 }

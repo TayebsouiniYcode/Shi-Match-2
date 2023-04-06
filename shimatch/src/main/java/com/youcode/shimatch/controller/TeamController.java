@@ -2,6 +2,7 @@ package com.youcode.shimatch.controller;
 
 import com.youcode.shimatch.Entity.Team;
 import com.youcode.shimatch.service.TeamService;
+import com.youcode.shimatch.utils.DeletePlayerFromTeamRequest;
 import com.youcode.shimatch.utils.JoinPlayerToTeam;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,9 @@ public class TeamController {
 
     @GetMapping("/{id}")
     public Team getTeamById(@PathVariable("id") Long id) throws Exception {
-        return teamService.getTeamById(id);
+        //TODO Refactoring
+        Team team = teamService.getTeamById(id);
+        return team;
     }
 
     @PutMapping("/update")
@@ -44,5 +47,10 @@ public class TeamController {
     @PostMapping("/addPlayer")
     public Team addPlayerToTeam(@RequestBody JoinPlayerToTeam joinPlayerToTeam) throws Exception {
         return teamService.addPlayerToTeam(joinPlayerToTeam);
+    }
+
+    @DeleteMapping("/deletePlayer")
+    public Team deletePlayerFromTeam(@RequestBody DeletePlayerFromTeamRequest deletePlayerFromTeamRequest) throws  Exception {
+        return teamService.deletePlayerFromTeam(deletePlayerFromTeamRequest);
     }
 }

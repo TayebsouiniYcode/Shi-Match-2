@@ -30,7 +30,7 @@ public class Team {
     @Column(name = "lose")
     private Integer lose;
 
-    @OneToMany(mappedBy = "team", orphanRemoval = true)
+    @OneToMany(mappedBy = "team")
     private List<User> users = new ArrayList<>();
 
     @OneToOne(orphanRemoval = true)

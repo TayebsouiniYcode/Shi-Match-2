@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 public class JoinPlayerToTeam {
-    Long id_user;
-    Long id_team;
+    private Long id_user;
+    private Long id_team;
 }

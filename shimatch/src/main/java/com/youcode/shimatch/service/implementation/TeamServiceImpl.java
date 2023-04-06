@@ -5,6 +5,7 @@ import com.youcode.shimatch.Entity.User;
 import com.youcode.shimatch.repository.TeamRepository;
 import com.youcode.shimatch.service.TeamService;
 import com.youcode.shimatch.service.UserService;
+import com.youcode.shimatch.utils.DeletePlayerFromTeamRequest;
 import com.youcode.shimatch.utils.JoinPlayerToTeam;
 import org.springframework.stereotype.Service;
 
@@ -81,15 +82,35 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public Team addPlayerToTeam(JoinPlayerToTeam joinPlayerToTeam) throws Exception {
+        //TODO check if player has team or not
+
         Optional<User> userOptional = userService.findById(joinPlayerToTeam.getId_user());
         Optional<Team> teamOptional = teamRepository.findById(joinPlayerToTeam.getId_team());
 
-        if (!userOptional.isPresent()) throw new Exception("User not found in database");
-        if (!teamOptional.isPresent()) throw new Exception("Team not found in database");
+        if (userOptional.isEmpty()) throw new Exception("User not found in database");
+        if (teamOptional.isEmpty()) throw new Exception("Team not found in database");
 
-        teamOptional.get().getUsers().add(userOptional.get());
-        System.out.println(teamOptional.get().toString());
+
+
+        //teamOptional.get().getUsers().add(userOptional.get());
+        userOptional.get().setTeam(teamOptional.get());
+        userService.save(userOptional.get());
+        //teamRepository.save(teamOptional.get());
+        return teamOptional.get();
+    }
+
+    @Override
+    public Team deletePlayerFromTeam(DeletePlayerFromTeamRequest deletePlayerFromTeamRequest) throws Exception {
+        Optional<Team> teamOptional = teamRepository.findById(deletePlayerFromTeamRequest.getId_team());
+        if (teamOptional.isEmpty()) throw new Exception("Team not found in database");
+
+        Optional<User> userOptional = userService.findById(deletePlayerFromTeamRequest.getId_player());
+        if (userOptional.isEmpty()) throw new Exception("Player not found in database");
+
+        teamOptional.get().getUsers().remove(userOptional.get());
+
         teamRepository.save(teamOptional.get());
+
         return teamOptional.get();
     }
 }
