@@ -5,6 +5,7 @@ import com.youcode.shimatch.Entity.User;
 import com.youcode.shimatch.service.MatchService;
 import com.youcode.shimatch.service.UserService;
 import com.youcode.shimatch.utils.MatchRequest;
+import com.youcode.shimatch.utils.MatchResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,5 +40,10 @@ public class UserController {
     @PostMapping("/match")
     public Match matchRequest(@RequestBody MatchRequest matchRequest) throws Exception {
         return matchService.createMatch(matchRequest);
+    }
+
+    @PutMapping("/matchResult")
+    public Match matchResult(@RequestBody MatchResult matchResult) throws Exception {
+        return matchService.matchResult(matchResult);
     }
 }

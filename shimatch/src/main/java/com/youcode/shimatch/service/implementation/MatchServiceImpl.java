@@ -8,6 +8,7 @@ import com.youcode.shimatch.service.MatchService;
 import com.youcode.shimatch.service.TeamService;
 import com.youcode.shimatch.service.UserService;
 import com.youcode.shimatch.utils.MatchRequest;
+import com.youcode.shimatch.utils.MatchResult;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -67,5 +68,18 @@ public class MatchServiceImpl implements MatchService {
     @Override
     public List<Match> findAllMatch() {
         return null;
+    }
+
+    @Override
+    public Match matchResult(MatchResult matchResult) throws Exception {
+        Optional<Match> matchOptional = matchRepository.findById(matchResult.getId_match());
+
+        if (matchOptional.isEmpty()) throw new Exception("Match not found in database");
+
+        matchOptional.get().setScoreTeam1(matchResult.getScore_team1());
+        matchOptional.get().setScoreTeam2(matchResult.getScore_team2());
+
+        matchRepository.save(matchOptional.get());
+        return matchOptional.get();
     }
 }

@@ -2,6 +2,7 @@ package com.youcode.shimatch.service;
 
 import com.youcode.shimatch.Entity.Match;
 import com.youcode.shimatch.utils.MatchRequest;
+import com.youcode.shimatch.utils.MatchResult;
 
 import java.util.List;
 
@@ -11,4 +12,6 @@ public interface MatchService {
     int deleteMatch(Long id);
     Match findMatchById(Long id);
     List<Match> findAllMatch();
+
+    Match matchResult(MatchResult matchResult) throws Exception;
 }
