@@ -60,6 +60,11 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
+    public Optional<Team> getOptionalTeam(Long id) {
+        return teamRepository.findById(id);
+    }
+
+    @Override
     public int deleteTeam(Long id) throws Exception {
         Optional<Team> teamOptional = teamRepository.findById(id);
 

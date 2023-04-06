@@ -1,8 +1,10 @@
 package com.youcode.shimatch.controller;
 
+import com.youcode.shimatch.Entity.Match;
 import com.youcode.shimatch.Entity.User;
+import com.youcode.shimatch.service.MatchService;
 import com.youcode.shimatch.service.UserService;
-import org.springframework.http.ResponseEntity;
+import com.youcode.shimatch.utils.MatchRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,9 +13,11 @@ import java.util.List;
 @RequestMapping("/api/user")
 public class UserController {
     private final UserService userService;
+    private final MatchService matchService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, MatchService matchService) {
         this.userService = userService;
+        this.matchService = matchService;
     }
 
     @PutMapping("/update/{id}")
@@ -30,5 +34,10 @@ public class UserController {
     public List<User> getAllUsers() {
         //test
         return userService.getAllUsers();
+    }
+
+    @PostMapping("/match")
+    public Match matchRequest(@RequestBody MatchRequest matchRequest) throws Exception {
+        return matchService.createMatch(matchRequest);
     }
 }
