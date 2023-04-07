@@ -19,25 +19,6 @@ import java.time.LocalDateTime;
  */
 @Data
 public class UserDto implements Serializable {
-    /*
-    public UserDto(User user) {
-        this.id = user.getId();
-        this.firstname = user.getFirstname();
-        this.lastname = user.getLastname();
-        this.email = user.getEmail();
-        this.username = user.getUsername();
-        this.password = user.getPassword();
-        this.phone = user.getPhone();
-        this.team = user.getTeam();
-        this.role = user.getRole();
-        this.address = user.getAddress();
-        this.weight = user.getWeight();
-        this.height = user.getHeight();
-        this.favoriteFoot = user.getFavoriteFoot();
-        this.dateOfBirth = user.getDateOfBirth();
-        this.phone = user.getPhone();
-    }
-    */
     private final Long id;
 
     @NotNull(message = "Firstname cannot be null") @NotBlank

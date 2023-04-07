@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
+@CrossOrigin()
 public class RoleController {
     private final RoleService roleService;
 
