@@ -20,7 +20,7 @@
                        <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-person"></i></div>
                           <div class="ps-3">
-                            <h6>30</h6>
+                            <h6>{{ numberOfUsers }}</h6>
                           </div>
                        </div>
                     </div>
@@ -35,7 +35,7 @@
                             <i class="bi bi-people-fill"></i>
                           </div>
                           <div class="ps-3">
-                            <h6>16</h6>
+                            <h6>{{ numberOfTeams }}</h6>
                           </div>
                        </div>
                     </div>
@@ -69,14 +69,15 @@
                              </tr>
                           </thead>
                           <tbody>
-                             <!-- <tr *ngFor="let noApprovedHotel of noApprovedHotels">
-                                <td> {{ noApprovedHotel.name }} </td>
-                                <td> {{ noApprovedHotel.addresseHotel.city }} </td>
-                                <td> {{ noApprovedHotel.addresseHotel.country }} </td>
+                             <tr *ngFor="let user of userList">
+                                <td> {{ user.id }} </td>
+                                <td> {{ user.firstname }} {{user.lastname}}} </td>
+                                <td> Problème to resolve</td>
+                                <td> {{ user.phone }} </td>
                                 <td class="text-center">
-                                   <a (click)="approveHotel(noApprovedHotel.id)" type="button" class=""><i class="bi bi-check-circle fs-2 text-success"></i></a>
+                                   <a (click)="userDetails(user.id)" type="button" class=""><i class="bi bi-eye-fill fs-2 text-success"></i></a>
                                   </td>
-                             </tr> -->
+                             </tr>
                           </tbody>
                        </table>
                     </div>
@@ -98,50 +99,24 @@
                             </tr>
                          </thead>
                          <tbody>
-                            <!-- <tr *ngFor="let noApprovedHotel of noApprovedHotels">
-                               <td> {{ noApprovedHotel.name }} </td>
-                               <td> {{ noApprovedHotel.addresseHotel.city }} </td>
-                               <td> {{ noApprovedHotel.addresseHotel.country }} </td>
+                            <tr *ngFor="let team of teamList">
+                               <td> {{ team.id }} </td>
+                               <td> {{ team.name }} </td>
+                               <td> comming soon </td>
+                               <td> {{ team.city }}</td>
+                               <td> {{ team.country }}</td>
                                <td class="text-center">
-                                  <a (click)="approveHotel(noApprovedHotel.id)" type="button" class=""><i class="bi bi-check-circle fs-2 text-success"></i></a>
+                                  <a (click)="teamDetails(team.id)" type="button" class=""><i class="bi bi-journal-text fs-2 text-success"></i></a>
                                  </td>
-                            </tr> -->
+                            </tr>
                          </tbody>
                       </table>
                    </div>
                 </div>
              </div>
-             <div class="col-12">
-              <div class="card top-selling overflow-auto">
-                 <div class="card-body pb-0">
-                    <h5 class="card-title">Liste des terrains</h5>
-                    <table class="table table-borderless">
-                       <thead>
-                          <tr>
-                             <th scope="col">ID</th>
-                             <th scope="col">Nom</th>
-                             <th scope="col">Ville</th>
-                             <th scope="col">Pays</th>
-                             <th scope="col" class="text-center">Action</th>
-                          </tr>
-                       </thead>
-                       <tbody>
-                          <!-- <tr *ngFor="let noApprovedHotel of noApprovedHotels">
-                             <td> {{ noApprovedHotel.name }} </td>
-                             <td> {{ noApprovedHotel.addresseHotel.city }} </td>
-                             <td> {{ noApprovedHotel.addresseHotel.country }} </td>
-                             <td class="text-center">
-                                <a (click)="approveHotel(noApprovedHotel.id)" type="button" class=""><i class="bi bi-check-circle fs-2 text-success"></i></a>
-                               </td>
-                          </tr> -->
-                       </tbody>
-                    </table>
-                 </div>
-              </div>
-           </div>
-           </div>
+            </div>
+          </div>
         </div>
-     </div>
   </section>
 </main>
 

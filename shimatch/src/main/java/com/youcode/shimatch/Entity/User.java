@@ -1,5 +1,6 @@
 package com.youcode.shimatch.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.youcode.shimatch.enums.FavoriteFoot;
 import com.youcode.shimatch.enums.Poste;
 
@@ -8,7 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class User {
+public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -60,7 +61,7 @@ public class User {
     @Column(name = "favorite_foot")
     private FavoriteFoot favoriteFoot;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "team_id")
     private Team team;
 

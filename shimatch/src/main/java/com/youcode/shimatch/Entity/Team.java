@@ -21,6 +21,15 @@ public class Team {
     @Column(name = "image")
     private String image;
 
+    @Column(name = "city")
+    private String city;
+
+    @Column(name= "country")
+    private String country;
+
+    @Column(name = "zipCode")
+    private String zipCode;
+
     @Column(name = "win")
     private Integer win;
 
@@ -99,6 +108,30 @@ public class Team {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
     @Override
