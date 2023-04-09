@@ -30,5 +30,10 @@
         <span>Gérer les équipes</span>
       </a>
     </li>
+    <li class="nav-item" *ngIf="hasRole('ROLE_ADMIN') || hasRole('ROLE_USER') || hasRole('ROLE_GERANT') ">
+      <a class="nav-link " routerLink="/team/teams">
+        <span>Equipes</span>
+      </a>
+    </li>
   </ul>
 </aside>

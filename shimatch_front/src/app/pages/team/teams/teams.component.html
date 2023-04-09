@@ -1,0 +1,57 @@
+<main id="main" class="main admin-proprietaire">
+  <div class="row">
+    <div class="col-8"></div>
+    <div class="col-4 d-flex justify-content-end" *ngIf="!hasTeam()">
+      <button routerLink="/team/createTeam" class="btn btn-primary">Create Team</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 teams-list my-5 rounded d-flex flex-wrap justify-content-between gap-2"
+      *ngFor="let team of teamList">
+      <div class="team-card bg-light rounded-3 w-30 p-3 text-center">
+        <a class="text-dark text-decoration-none" href="">
+          <div class="team-logo mt-2">
+            <img
+              src="https://images.pexels.com/photos/14655912/pexels-photo-14655912.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="" width="150" height="150">
+          </div>
+          <div class="team-name mt-3">
+            <h5>{{ team.name }}</h5>
+          </div>
+          <div class="team-stats mt-3 d-flex justify-content-between gap-2">
+            <div class="win d-flex w-100">
+              <div class="badge-stats win-title bg-success w-75">
+                <span class="fs-8 text-light w-100">Win</span>
+              </div>
+              <div class="win-number w-25">
+                <span class="w-25">{{ team.win}}</span>
+              </div>
+            </div>
+            <div class="loss d-flex rounded w-100">
+              <div class="badge-stats loss-title bg-danger w-75">
+                <span class="fs-8 text-light">Loss</span>
+              </div>
+              <div class="loss-number w-25">
+                <span>2</span>
+              </div>
+            </div>
+            <div class="draw d-flex rounded w-100">
+              <div class="badge-stats draw-title bg-warning w-75">
+                <span class="fs-8 text-light">Draw</span>
+              </div>
+              <div class="draw-number w-25">
+                <span>6</span>
+              </div>
+            </div>
+          </div>
+          <div class="team-info bg-light d-flex flex-column mt-3">
+            <span>Country : {{ team.country }}</span>
+            <span>City : {{ team.city }}</span>
+            <span>Players : 5/ {{ team.users.length }} </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</main>
