@@ -13,6 +13,7 @@ import { ManageTeamsComponent } from './pages/admin/manage-teams/manage-teams.co
 import { CreateStadiumComponent } from './pages/stadium/create-stadium/create-stadium.component';
 import { DetailsStadiumComponent } from './pages/stadium/details-stadium/details-stadium.component';
 import { TeamsComponent } from './pages/team/teams/teams.component';
+import { CreateTeamComponent } from './pages/team/create-team/create-team.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: "admin/teams", component: ManageTeamsComponent, canActivate: [AuthGuard]},
   { path: "stadium/createStadium", component: CreateStadiumComponent, canActivate: [AuthGuard]},
   { path: "stadium/detailsStadium/:id", component: DetailsStadiumComponent, canActivate: [AuthGuard]},
-  { path: "team/teams", component: TeamsComponent, canActivate: [AuthGuard]}
+  { path: "team/teams", component: TeamsComponent, canActivate: [AuthGuard]},
+  { path: "team/createTeam", component: CreateTeamComponent, canActivate: [AuthGuard]}
 ];
 
 
