@@ -18,4 +18,8 @@ export class TeamService {
   createTeam(team: Team) : Observable<any>{
       return this.http.post("http://localhost:8080/api/team/create", team);
   }
+
+  getTeamById(id: number): Observable<any> {
+    return this.http.get("http://localhost:8080/api/team/" + id);
+  }
 }

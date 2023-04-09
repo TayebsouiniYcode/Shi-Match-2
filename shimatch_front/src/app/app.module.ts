@@ -21,6 +21,7 @@ import { CreateStadiumComponent } from './pages/stadium/create-stadium/create-st
 import { DetailsStadiumComponent } from './pages/stadium/details-stadium/details-stadium.component';
 import { TeamsComponent } from './pages/team/teams/teams.component';
 import { CreateTeamComponent } from './pages/team/create-team/create-team.component';
+import { DetailsTeamComponent } from './pages/team/details-team/details-team.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CreateTeamComponent } from './pages/team/create-team/create-team.compon
     CreateStadiumComponent,
     DetailsStadiumComponent,
     TeamsComponent,
-    CreateTeamComponent
+    CreateTeamComponent,
+    DetailsTeamComponent
   ],
   imports: [
     BrowserModule,

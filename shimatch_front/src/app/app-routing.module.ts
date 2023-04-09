@@ -14,6 +14,7 @@ import { CreateStadiumComponent } from './pages/stadium/create-stadium/create-st
 import { DetailsStadiumComponent } from './pages/stadium/details-stadium/details-stadium.component';
 import { TeamsComponent } from './pages/team/teams/teams.component';
 import { CreateTeamComponent } from './pages/team/create-team/create-team.component';
+import { DetailsTeamComponent } from './pages/team/details-team/details-team.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: "stadium/createStadium", component: CreateStadiumComponent, canActivate: [AuthGuard]},
   { path: "stadium/detailsStadium/:id", component: DetailsStadiumComponent, canActivate: [AuthGuard]},
   { path: "team/teams", component: TeamsComponent, canActivate: [AuthGuard]},
-  { path: "team/createTeam", component: CreateTeamComponent, canActivate: [AuthGuard]}
+  { path: "team/createTeam", component: CreateTeamComponent, canActivate: [AuthGuard]},
+  { path: "team/detailsTeam/:id", component: DetailsTeamComponent, canActivate: [AuthGuard]}
 ];
 
 
