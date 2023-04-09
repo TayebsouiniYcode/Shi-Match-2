@@ -14,4 +14,8 @@ export class StadiumService {
   getAllStadiumByOwner(id: number): Observable<Stadium[]> {
     return this.http.get<Stadium[]>("http://localhost:8080/api/stadium/byOwner/" + id);
   }
+
+  createStadium(stadium: Stadium): Observable<any> {
+    return this.http.post<Stadium>("http://localhost:8080/api/stadium/create", stadium);
+  }
 }
