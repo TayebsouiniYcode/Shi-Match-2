@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Stadium } from 'src/app/model/Stadium';
 import { StadiumService } from 'src/app/service/stadium.service';
 import { TeamService } from 'src/app/service/team.service';
 import { TokenService } from 'src/app/service/token-service.service';
@@ -25,10 +26,14 @@ export class DashboardComponent implements OnInit {
   numberOfUsers?: number;
   numberOfTeams?: number;
   numberOfStadium?: number;
+  stadiumByOwner?: any[];
+
+  user?: any;
 
   ngOnInit(): void {
     this.getAllUsers();
     this.getAllTeams();
+    this.gettAllStadiumByOwner(32);
   }
 
   getAllUsers(): void {
@@ -47,6 +52,14 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+  gettAllStadiumByOwner(id: number) {
+    this.stadiumService.getAllStadiumByOwner(id).subscribe(
+      (data) => {
+        this.stadiumByOwner = data;
+      }
+    )
+  }
+
   hasRole(roleName: string) : boolean | any{
     let roles = this.tokenService.getRoles();
 
@@ -63,6 +76,14 @@ export class DashboardComponent implements OnInit {
 
   teamDetails(id: number) {
     console.log(id);
+  }
+
+  chargeModal(user: any) {
+    this.user = user;
+  }
+
+  stadiumDetails(stadium: Stadium) {
+    console.log(stadium);
   }
 
 }

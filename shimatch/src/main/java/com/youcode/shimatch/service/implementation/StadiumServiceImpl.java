@@ -79,4 +79,13 @@ public class StadiumServiceImpl implements StadiumService {
             return 0;
         }
     }
+
+    @Override
+    public List<Stadium> getAllStadiumByOwnerId(Long id) {
+        Optional<User> userOptional = userService.findById(id);
+        if (userOptional.isPresent()) {
+            return this.stadiumRepository.findByOwner(userOptional.get());
+        }
+        return null;
+    }
 }

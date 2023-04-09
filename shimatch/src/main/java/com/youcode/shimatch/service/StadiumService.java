@@ -11,4 +11,5 @@ public interface StadiumService {
     Stadium getStadiumById(Long id) throws Exception;
     List<Stadium> getAllStadium();
     int deleteStadium(Long id) throws Exception;
+    List<Stadium> getAllStadiumByOwnerId(Long id);
 }

@@ -41,4 +41,9 @@ public class StadiumController {
     public Stadium createStadium(@RequestBody CreateStadiumRequest createStadiumRequest) throws Exception {
         return stadiumService.createStadium(createStadiumRequest);
     }
+
+    @GetMapping("/byOwner/{id}")
+    public List<Stadium> getAllStadiumByOwnerId(@PathVariable("id") Long id) {
+        return stadiumService.getAllStadiumByOwnerId(id);
+    }
 }

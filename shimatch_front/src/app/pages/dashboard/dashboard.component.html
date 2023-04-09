@@ -179,30 +179,60 @@
               <div class="col-12">
                  <div class="card top-selling overflow-auto">
                     <div class="card-body pb-0">
-                       <h5 class="card-title">Reservations</h5>
-                       <!-- <table class="table table-borderless">
+                       <h5 class="card-title">Liste de vos Terrains</h5>
+                       <a routerLink="/stadium/createStadium">Create Stadium</a>
+                       <table class="table table-borderless">
                           <thead>
                              <tr>
-                                <th scope="col">Hotel</th>
-                                <th scope="col">City</th>
-                                <th scope="col">Country</th>
-                                <th scope="col" class="text-center">Approve</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col" class="text-center">Action</th>
                              </tr>
                           </thead>
                           <tbody>
-                             <tr *ngFor="let noApprovedHotel of noApprovedHotels">
-                                <td> {{ noApprovedHotel.name }} </td>
-                                <td> {{ noApprovedHotel.addresseHotel.city }} </td>
-                                <td> {{ noApprovedHotel.addresseHotel.country }} </td>
+                             <tr *ngFor="let stadium of stadiumByOwner">
+                                <td> {{ stadium.id }} </td>
+                                <td> {{ stadium.name}} </td>
+                                <td> {{ stadium.city }}, {{ stadium.country}} </td>
+                                <td> {{ stadium.phone }} </td>
                                 <td class="text-center">
-                                   <button (click)="approveHotel(noApprovedHotel.id)" type="button" class="btn btn-secondary">Approve</button>
-                                  </td>
+                                   <button (click)="stadiumDetails(stadium)" type="button" class="btn btn-secondary">Show</button>
+                                </td>
                              </tr>
                           </tbody>
-                       </table> -->
+                       </table>
                     </div>
                  </div>
               </div>
+              <div class="col-12">
+                <div class="card top-selling overflow-auto">
+                   <div class="card-body pb-0">
+                      <h5 class="card-title">Reservations</h5>
+                      <!-- <table class="table table-borderless">
+                         <thead>
+                            <tr>
+                               <th scope="col">Hotel</th>
+                               <th scope="col">City</th>
+                               <th scope="col">Country</th>
+                               <th scope="col" class="text-center">Approve</th>
+                            </tr>
+                         </thead>
+                         <tbody>
+                            <tr *ngFor="let noApprovedHotel of noApprovedHotels">
+                               <td> {{ noApprovedHotel.name }} </td>
+                               <td> {{ noApprovedHotel.addresseHotel.city }} </td>
+                               <td> {{ noApprovedHotel.addresseHotel.country }} </td>
+                               <td class="text-center">
+                                  <button (click)="approveHotel(noApprovedHotel.id)" type="button" class="btn btn-secondary">Approve</button>
+                                 </td>
+                            </tr>
+                         </tbody>
+                      </table> -->
+                   </div>
+                </div>
+             </div>AkAshi#7133
            </div>
         </div>
      </div>
