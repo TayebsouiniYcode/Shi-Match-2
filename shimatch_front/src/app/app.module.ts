@@ -18,6 +18,7 @@ import { ManageStadiumComponent } from './pages/admin/manage-stadium/manage-stad
 import { ManageMatchComponent } from './pages/admin/manage-match/manage-match.component';
 import { ManageTeamsComponent } from './pages/admin/manage-teams/manage-teams.component';
 import { CreateStadiumComponent } from './pages/stadium/create-stadium/create-stadium.component';
+import { DetailsStadiumComponent } from './pages/stadium/details-stadium/details-stadium.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CreateStadiumComponent } from './pages/stadium/create-stadium/create-st
     ManageStadiumComponent,
     ManageMatchComponent,
     ManageTeamsComponent,
-    CreateStadiumComponent
+    CreateStadiumComponent,
+    DetailsStadiumComponent
   ],
   imports: [
     BrowserModule,

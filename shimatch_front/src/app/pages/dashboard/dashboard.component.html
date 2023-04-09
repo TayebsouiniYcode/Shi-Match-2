@@ -198,7 +198,7 @@
                                 <td> {{ stadium.city }}, {{ stadium.country}} </td>
                                 <td> {{ stadium.phone }} </td>
                                 <td class="text-center">
-                                   <button (click)="stadiumDetails(stadium)" type="button" class="btn btn-secondary">Show</button>
+                                   <button (click)="stadiumDetails(stadium)" routerLink="/stadium/detailsStadium/{{ stadium.id }}" type="button" class="btn btn-secondary">Show</button>
                                 </td>
                              </tr>
                           </tbody>

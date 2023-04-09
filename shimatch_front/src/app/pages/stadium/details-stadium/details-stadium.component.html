@@ -1,0 +1,100 @@
+<main id="main" class="main">
+  <div class="row">
+    <div class="col-md-4">
+      <img
+        src="https://images.pexels.com/photos/3131406/pexels-photo-3131406.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        class="w-100" alt="">
+    </div>
+    <div class="col-md-6 d-flex flex-column justify-content-between">
+      <div>
+        <div class="d-flex justify-content-between mt-4">
+          <h3>{{ stadium.name }}</h3>
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Delete
+          </button>
+        </div>
+        <hr>
+        <p class="mt-5">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum iure accusantium illo quibusdam est ducimus
+          voluptate possimus adipisci ex alias natus, libero dicta consequatur soluta culpa magni magnam! Ab, eius?
+        </p>
+      </div>
+      <div>
+        <h4>Adresse : </h4>
+        <p>
+          Ville : {{ stadium.city}} <br>
+          Pays : {{ stadium.country }} <br>
+          Code Postale : {{ stadium.zipCode }}
+        </p>
+      </div>
+      <div class="row stats">
+        <div class="col-xxl-4 col-md-6">
+          <div class="card info-card sales-card">
+            <div class="card-body">
+              <h5 class="card-title">Revenue <span></span></h5>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-currency-dollar h2"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>145 MAD</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xxl-4 col-md-6">
+          <div class="card info-card sales-card">
+            <div class="card-body">
+              <h5 class="card-title"> Reservations <span></span></h5>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-ticket-perforated h2"></i></div>
+                <div class="ps-3">
+                  <h6>145</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xxl-4 col-md-6">
+          <div class="card info-card sales-card">
+            <div class="card-body">
+              <h5 class="card-title"> Matchs <span></span></h5>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-ticket-perforated h2"></i></div>
+                <div class="ps-3">
+                  <h6>145</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</main>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Supprimer le terrain</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure for delete Stadium: {{ stadium.name }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="deleteStadium()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
