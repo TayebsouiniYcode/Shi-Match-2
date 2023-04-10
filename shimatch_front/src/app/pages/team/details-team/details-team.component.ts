@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Team } from 'src/app/model/Team';
 import { TeamService } from 'src/app/service/team.service';
+import { TokenService } from 'src/app/service/token-service.service';
 
 @Component({
   selector: 'app-details-team',
@@ -12,7 +13,9 @@ export class DetailsTeamComponent implements OnInit {
 
   team = new Team();
 
-  constructor(private activatedRoute: ActivatedRoute, private teamService: TeamService) { }
+  constructor(private activatedRoute: ActivatedRoute,
+    private teamService: TeamService,
+    private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.chargeTeam();
@@ -28,5 +31,15 @@ export class DetailsTeamComponent implements OnInit {
 
   deleteTeam() {
 
+  }
+
+  hasTeam(): boolean {
+    let email = this.tokenService.getUsername();
+    let hasTeam = this.teamService.hasTeam(email);
+    return true;
+  }
+
+  isValid(): boolean {
+    return true;
   }
 }

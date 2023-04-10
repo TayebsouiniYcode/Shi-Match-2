@@ -22,4 +22,8 @@ export class TeamService {
   getTeamById(id: number): Observable<any> {
     return this.http.get("http://localhost:8080/api/team/" + id);
   }
+
+  hasTeam(email: string): Observable<Boolean> {
+    return this.http.get<Boolean>("http://localhost:8080/api/team/hasTeam/" + email);
+  }
 }

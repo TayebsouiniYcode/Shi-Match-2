@@ -118,4 +118,17 @@ public class TeamServiceImpl implements TeamService {
 
         return teamOptional.get();
     }
+
+    @Override
+    public Boolean hasTeam(String email) {
+        User user = userService.findByEmail(email);
+
+        if (user != null && !user.equals(new User())) {
+            if (user.getTeam() != null && !user.getTeam().equals(new Team())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

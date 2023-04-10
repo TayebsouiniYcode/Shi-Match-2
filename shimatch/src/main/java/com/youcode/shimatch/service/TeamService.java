@@ -18,4 +18,6 @@ public interface TeamService {
 
     Team addPlayerToTeam(JoinPlayerToTeam joinPlayerToTeam) throws Exception;
     Team deletePlayerFromTeam(DeletePlayerFromTeamRequest deletePlayerFromTeamRequest) throws Exception;
+
+    Boolean hasTeam(String email);
 }
