@@ -41,8 +41,8 @@ public class UserController {
     }
 
     @PostMapping("/match")
-    public Match matchRequest(@RequestBody MatchRequest matchRequest) throws Exception {
-        return matchService.createMatch(matchRequest);
+    public Match matchRequest(@RequestBody MatchRequest matchRequest, Principal principal) throws Exception {
+        return matchService.createMatch(matchRequest, principal);
     }
 
     @PutMapping("/matchResult")
@@ -53,5 +53,10 @@ public class UserController {
     @GetMapping("/team")
     public Team getTeam(Principal principal) {
         return null;
+    }
+
+    @GetMapping("/matchs")
+    public List<Match> getAllMatchByUser(Principal principal) {
+        return matchService.getAllMatchByUser(userService.findByEmail(principal.getName()));
     }
 }

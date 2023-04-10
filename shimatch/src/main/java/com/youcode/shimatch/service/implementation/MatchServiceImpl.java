@@ -11,6 +11,9 @@ import com.youcode.shimatch.utils.MatchRequest;
 import com.youcode.shimatch.utils.MatchResult;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,23 +30,25 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public Match createMatch(MatchRequest matchRequest) throws Exception {
-        Optional<Team> team1Optional = teamService.getOptionalTeam(matchRequest.getId_team1());
+    public Match createMatch(MatchRequest matchRequest, Principal principal) throws Exception {
+        User user = userService.findByEmail(principal.getName());
+        if(user == null || user.equals(new User())) throw new Exception("user not found in database");
+        Optional<Team> team1Optional = teamService.getOptionalTeam(user.getTeam().getId());
         Optional<Team> team2Optional = teamService.getOptionalTeam(matchRequest.getId_team2());
-        Optional<User> userOptional = userService.findById(matchRequest.getId_user());
+
 
         if (team1Optional.isEmpty()) throw new Exception("Team 1 not found in database");
         if (team2Optional.isEmpty()) throw new Exception("Team 2 not found in database");
-        if (userOptional.isEmpty()) throw new Exception("User not found in database");
 
-        if (team1Optional.get().getCapitaine() != null && !team1Optional.get().getCapitaine().equals(userOptional.get())) throw new Exception("You are not a capitaine of this team");
+        if (team1Optional.get().getCapitaine() != null && !team1Optional.get().getCapitaine().equals(user)) throw new Exception("You are not a capitaine of this team");
 
         if (matchRequest.getId_Stadium() != null) {
             //TODO check stadium if exist
         }
 
         Match match = new Match();
-        match.setDate(matchRequest.getDate());
+        LocalDateTime localDateTime = matchRequest.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        match.setDate(localDateTime);
         match.setTeam1(team1Optional.get());
         match.setTeam2(team2Optional.get());
         matchRepository.save(match);
@@ -81,5 +86,10 @@ public class MatchServiceImpl implements MatchService {
 
         matchRepository.save(matchOptional.get());
         return matchOptional.get();
+    }
+
+    @Override
+    public List<Match> getAllMatchByUser(User user) {
+        return this.matchRepository.findAllByTeam1(user.getTeam());
     }
 }

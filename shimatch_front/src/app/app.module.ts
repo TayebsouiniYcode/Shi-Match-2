@@ -24,6 +24,7 @@ import { CreateTeamComponent } from './pages/team/create-team/create-team.compon
 import { DetailsTeamComponent } from './pages/team/details-team/details-team.component';
 import { JwtInterceptor } from './interceptor/jwt.interceptor';
 import { RequestMatchComponent } from './pages/match/request-match/request-match.component';
+import { MatchsComponent } from './pages/match/matchs/matchs.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { RequestMatchComponent } from './pages/match/request-match/request-match
     TeamsComponent,
     CreateTeamComponent,
     DetailsTeamComponent,
-    RequestMatchComponent
+    RequestMatchComponent,
+    MatchsComponent
   ],
   imports: [
     BrowserModule,

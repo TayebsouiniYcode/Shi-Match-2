@@ -5,6 +5,7 @@ import com.youcode.shimatch.service.StadiumService;
 import com.youcode.shimatch.utils.CreateStadiumRequest;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -38,12 +39,12 @@ public class StadiumController {
     }
 
     @PostMapping("/create")
-    public Stadium createStadium(@RequestBody CreateStadiumRequest createStadiumRequest) throws Exception {
-        return stadiumService.createStadium(createStadiumRequest);
+    public Stadium createStadium(@RequestBody CreateStadiumRequest createStadiumRequest, Principal principal) throws Exception {
+        return stadiumService.createStadium(createStadiumRequest, principal);
     }
 
-    @GetMapping("/byOwner/{id}")
-    public List<Stadium> getAllStadiumByOwnerId(@PathVariable("id") Long id) {
-        return stadiumService.getAllStadiumByOwnerId(id);
+    @GetMapping("/byOwner")
+    public List<Stadium> getAllStadiumByOwnerId(Principal principal) {
+        return stadiumService.getAllStadiumByOwnerId(principal);
     }
 }

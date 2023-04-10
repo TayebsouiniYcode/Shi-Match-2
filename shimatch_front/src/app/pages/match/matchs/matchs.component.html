@@ -1,0 +1,48 @@
+<main id="main" class="main admin-proprietaire">
+  <div class="pagetitle">
+     <h1>Match list</h1>
+     <nav>
+        <ol class="breadcrumb">
+           <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+           <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+     </nav>
+  </div>
+  <section class="section dashboard">
+     <div class="row">
+        <div class="col-lg-12">
+           <div class="row">
+              <div class="col-12">
+                 <div class="card top-selling overflow-auto">
+                    <div class="card-body pb-0">
+                       <h5 class="card-title">Liste des matchs de votre équipe</h5>
+                       <table class="table table-borderless">
+                          <thead>
+                             <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Team 1</th>
+                                <th scope="col">Team 2</th>
+                                <th scope="col" class="text-center">Action</th>
+                             </tr>
+                          </thead>
+                          <tbody>
+                             <tr *ngFor="let match of matchList">
+                                <td> {{ match.id }} </td>
+                                <td> {{ match.date }} </td>
+                                <td> {{ match.team1.name}}</td>
+                                <td> {{ match.team1.name}} </td>
+                                <td class="text-center">
+                                   <!-- <button (click)="stadiumDetails(stadium)" routerLink="/stadium/detailsStadium/{{ stadium.id }}" type="button" class="btn btn-secondary">Show</button> -->
+                                </td>
+                             </tr>
+                          </tbody>
+                       </table>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+  </section>
+</main>

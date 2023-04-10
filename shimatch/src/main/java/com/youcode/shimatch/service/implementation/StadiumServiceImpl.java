@@ -8,6 +8,7 @@ import com.youcode.shimatch.service.UserService;
 import com.youcode.shimatch.utils.CreateStadiumRequest;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,15 +23,15 @@ public class StadiumServiceImpl implements StadiumService {
     }
 
     @Override
-    public Stadium createStadium(CreateStadiumRequest createStadiumRequest) throws Exception {
+    public Stadium createStadium(CreateStadiumRequest createStadiumRequest, Principal principal) throws Exception {
         //TODO refactoring
-        Optional<User> userOptional = userService.findById(createStadiumRequest.getId_owner());
+        User user = userService.findByEmail(principal.getName());
 
-        if (userOptional.isEmpty()) throw new Exception("User not found in database");
+        if (user == null || user.equals(new User())) throw new Exception("User not found in database");
 
         Stadium stadium = new Stadium();
 
-        stadium.setOwner(userOptional.get());
+        stadium.setOwner(user);
 
         if (createStadiumRequest.getName() != null && !createStadiumRequest.getName().isEmpty()) stadium.setName(createStadiumRequest.getName());
         if (createStadiumRequest.getCity() != null && !createStadiumRequest.getCity().isEmpty()) stadium.setCity(createStadiumRequest.getCity());
@@ -81,10 +82,10 @@ public class StadiumServiceImpl implements StadiumService {
     }
 
     @Override
-    public List<Stadium> getAllStadiumByOwnerId(Long id) {
-        Optional<User> userOptional = userService.findById(id);
-        if (userOptional.isPresent()) {
-            return this.stadiumRepository.findByOwner(userOptional.get());
+    public List<Stadium> getAllStadiumByOwnerId(Principal principal) {
+        User user = userService.findByEmail(principal.getName());
+        if (user != null && !user.equals(new User())) {
+            return this.stadiumRepository.findByOwner(user);
         }
         return null;
     }

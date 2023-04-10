@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getAllUsers();
     this.getAllTeams();
-    this.gettAllStadiumByOwner(32);
+    this.gettAllStadiumByOwner();
   }
 
   getAllUsers(): void {
@@ -52,8 +52,8 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  gettAllStadiumByOwner(id: number) {
-    this.stadiumService.getAllStadiumByOwner(id).subscribe(
+  gettAllStadiumByOwner() {
+    this.stadiumService.getAllStadiumByOwner().subscribe(
       (data) => {
         this.stadiumByOwner = data;
       }
