@@ -33,6 +33,7 @@ public class TeamServiceImpl implements TeamService {
                     if (email != null && !email.equals("")) {
                         User user = userService.findByEmail(email);
                         team.setCapitaine(user);
+                        user.setTeam(team);
                         teamRepository.save(team);
                         System.out.println(team.toString());
                         return team;

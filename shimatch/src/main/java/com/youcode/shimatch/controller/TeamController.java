@@ -56,7 +56,7 @@ public class TeamController {
         return teamService.deletePlayerFromTeam(deletePlayerFromTeamRequest);
     }
 
-    @GetMapping("/hasTeam/{email}")
+    @GetMapping("/hasTeam/")
     public Boolean hasTeam(@PathVariable("email") String email) {
         return this.teamService.hasTeam(email);
     }

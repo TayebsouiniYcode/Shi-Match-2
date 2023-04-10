@@ -1,6 +1,7 @@
 package com.youcode.shimatch.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.*;
 
 import javax.persistence.*;
@@ -45,7 +46,7 @@ public class Team {
     @OneToOne(orphanRemoval = true)
     @JoinColumn(name = "capitaine_id")
     private User capitaine;
-
+    @JsonIgnore
     public User getCapitaine() {
         return capitaine;
     }
@@ -54,6 +55,7 @@ public class Team {
         this.capitaine = capitaine;
     }
 
+    @JsonIgnore
     public List<User> getUsers() {
         return users;
     }
@@ -143,8 +145,6 @@ public class Team {
                 ", win=" + win +
                 ", draw=" + draw +
                 ", lose=" + lose +
-                ", users=" + users +
-                ", capitaine=" + capitaine +
                 '}';
     }
 }
