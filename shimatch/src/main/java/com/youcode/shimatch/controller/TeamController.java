@@ -6,6 +6,7 @@ import com.youcode.shimatch.utils.DeletePlayerFromTeamRequest;
 import com.youcode.shimatch.utils.JoinPlayerToTeam;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -41,8 +42,8 @@ public class TeamController {
     }
 
     @PostMapping("/create")
-    public Team createTeam(@RequestBody Team team) throws Exception {
-        return teamService.createTeam(team);
+    public Team createTeam(@RequestBody Team team, Principal principal) throws Exception {
+        return teamService.createTeam(team, principal);
     }
 
     @PostMapping("/addPlayer")

@@ -7,8 +7,10 @@ import com.youcode.shimatch.service.TeamService;
 import com.youcode.shimatch.service.UserService;
 import com.youcode.shimatch.utils.DeletePlayerFromTeamRequest;
 import com.youcode.shimatch.utils.JoinPlayerToTeam;
+import org.springframework.boot.actuate.trace.http.HttpTrace;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,17 +25,27 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public Team createTeam(Team team) throws Exception {
+    public Team createTeam(Team team, Principal principal) throws Exception {
         if (team != null && !team.equals(new Team())) {
             if (team.getName() != null && !team.getName().isEmpty() && !team.getName().isBlank()) {
-                teamRepository.save(team);
-                return team;
+                if (principal != null) {
+                    String email = principal.getName();
+                    if (email != null && !email.equals("")) {
+                        User user = userService.findByEmail(email);
+                        team.setCapitaine(user);
+                        teamRepository.save(team);
+                        System.out.println(team.toString());
+                        return team;
+                    }
+                }
+
             } else {
                 throw new Exception("Team name is empty or blank or null");
             }
         } else {
             throw new Exception("Team is null");
         }
+        return team;
     }
 
     @Override

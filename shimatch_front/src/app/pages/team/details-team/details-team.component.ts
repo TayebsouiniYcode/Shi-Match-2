@@ -36,6 +36,7 @@ export class DetailsTeamComponent implements OnInit {
   hasTeam(): boolean {
     let email = this.tokenService.getUsername();
     let hasTeam = this.teamService.hasTeam(email);
+    console.log(hasTeam);
     return true;
   }
 

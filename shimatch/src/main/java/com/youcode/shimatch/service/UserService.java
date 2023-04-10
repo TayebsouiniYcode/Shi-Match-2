@@ -1,7 +1,6 @@
 package com.youcode.shimatch.service;
 
 import com.youcode.shimatch.Entity.Role;
-import com.youcode.shimatch.Entity.Team;
 import com.youcode.shimatch.Entity.User;
 import com.youcode.shimatch.dto.UserDto;
 import com.youcode.shimatch.utils.LoginForm;

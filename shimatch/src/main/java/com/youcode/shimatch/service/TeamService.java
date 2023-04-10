@@ -4,11 +4,12 @@ import com.youcode.shimatch.Entity.Team;
 import com.youcode.shimatch.utils.DeletePlayerFromTeamRequest;
 import com.youcode.shimatch.utils.JoinPlayerToTeam;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
 public interface TeamService {
-    Team createTeam(Team team) throws Exception;
+    Team createTeam(Team team, Principal principal) throws Exception;
     Team updateTeam(Team team) throws Exception;
     Team getTeamById(Long id) throws Exception;
 
