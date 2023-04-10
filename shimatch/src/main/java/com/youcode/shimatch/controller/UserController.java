@@ -1,6 +1,7 @@
 package com.youcode.shimatch.controller;
 
 import com.youcode.shimatch.Entity.Match;
+import com.youcode.shimatch.Entity.Team;
 import com.youcode.shimatch.Entity.User;
 import com.youcode.shimatch.service.MatchService;
 import com.youcode.shimatch.service.UserService;
@@ -8,6 +9,7 @@ import com.youcode.shimatch.utils.MatchRequest;
 import com.youcode.shimatch.utils.MatchResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -46,5 +48,10 @@ public class UserController {
     @PutMapping("/matchResult")
     public Match matchResult(@RequestBody MatchResult matchResult) throws Exception {
         return matchService.matchResult(matchResult);
+    }
+
+    @GetMapping("/team")
+    public Team getTeam(Principal principal) {
+        return null;
     }
 }

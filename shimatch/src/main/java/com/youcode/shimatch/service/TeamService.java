@@ -1,6 +1,7 @@
 package com.youcode.shimatch.service;
 
 import com.youcode.shimatch.Entity.Team;
+import com.youcode.shimatch.Entity.User;
 import com.youcode.shimatch.utils.DeletePlayerFromTeamRequest;
 import com.youcode.shimatch.utils.JoinPlayerToTeam;
 
@@ -21,4 +22,6 @@ public interface TeamService {
     Team deletePlayerFromTeam(DeletePlayerFromTeamRequest deletePlayerFromTeamRequest) throws Exception;
 
     Boolean hasTeam(String email);
+
+    User getCapitaine(Long id);
 }

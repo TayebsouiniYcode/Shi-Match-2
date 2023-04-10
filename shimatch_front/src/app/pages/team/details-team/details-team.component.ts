@@ -12,6 +12,7 @@ import { TokenService } from 'src/app/service/token-service.service';
 export class DetailsTeamComponent implements OnInit {
 
   team = new Team();
+  isCapitaine?: boolean;
 
   constructor(private activatedRoute: ActivatedRoute,
     private teamService: TeamService,
@@ -27,6 +28,7 @@ export class DetailsTeamComponent implements OnInit {
         this.team = data;
       }
     )
+    this.ownerOfThisTeam();
   }
 
   deleteTeam() {
@@ -43,4 +45,22 @@ export class DetailsTeamComponent implements OnInit {
   isValid(): boolean {
     return true;
   }
+
+  ownerOfThisTeam(): void {
+
+    this.teamService.getCapitaine(this.activatedRoute.snapshot.params["id"]).subscribe(
+      (data) => {
+        let capitaine = data.email;
+        let username = this.tokenService.getUsername();
+        console.log(username);
+        console.log(capitaine);
+
+        this.isCapitaine = false;
+
+        if (username == capitaine) this.isCapitaine=  true;
+
+      }
+    );
+  }
+
 }

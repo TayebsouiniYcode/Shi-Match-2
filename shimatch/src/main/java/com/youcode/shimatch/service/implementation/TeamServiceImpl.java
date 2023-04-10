@@ -7,7 +7,6 @@ import com.youcode.shimatch.service.TeamService;
 import com.youcode.shimatch.service.UserService;
 import com.youcode.shimatch.utils.DeletePlayerFromTeamRequest;
 import com.youcode.shimatch.utils.JoinPlayerToTeam;
-import org.springframework.boot.actuate.trace.http.HttpTrace;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
@@ -32,10 +31,14 @@ public class TeamServiceImpl implements TeamService {
                     String email = principal.getName();
                     if (email != null && !email.equals("")) {
                         User user = userService.findByEmail(email);
-                        team.setCapitaine(user);
-                        user.setTeam(team);
-                        teamRepository.save(team);
-                        System.out.println(team.toString());
+
+                        if (user.getTeam() == null) {
+                            team.setImage("https://images.pexels.com/photos/14655912/pexels-photo-14655912.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+                            team.setCapitaine(user);
+                            user.setTeam(team);
+                            teamRepository.save(team);
+                            System.out.println(team.toString());
+                        }
                         return team;
                     }
                 }
@@ -143,5 +146,14 @@ public class TeamServiceImpl implements TeamService {
         }
 
         return false;
+    }
+
+    @Override
+    public User getCapitaine(Long id) {
+        Optional<Team> teamOptional = teamRepository.findById(id);
+        if (teamOptional.isPresent()) {
+            return teamOptional.get().getCapitaine();
+        }
+        return null;
     }
 }

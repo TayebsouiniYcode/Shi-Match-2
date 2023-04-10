@@ -1,6 +1,7 @@
 package com.youcode.shimatch.controller;
 
 import com.youcode.shimatch.Entity.Team;
+import com.youcode.shimatch.Entity.User;
 import com.youcode.shimatch.service.TeamService;
 import com.youcode.shimatch.utils.DeletePlayerFromTeamRequest;
 import com.youcode.shimatch.utils.JoinPlayerToTeam;
@@ -56,8 +57,13 @@ public class TeamController {
         return teamService.deletePlayerFromTeam(deletePlayerFromTeamRequest);
     }
 
-    @GetMapping("/hasTeam/")
+    @GetMapping("/hasTeam/{email}")
     public Boolean hasTeam(@PathVariable("email") String email) {
         return this.teamService.hasTeam(email);
+    }
+
+    @GetMapping("/getCapitaine/{id}")
+    public User getCapitaine(@PathVariable("id") Long id) {
+        return teamService.getCapitaine(id);
     }
 }

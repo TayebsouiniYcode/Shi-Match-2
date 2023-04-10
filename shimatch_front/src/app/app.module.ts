@@ -22,6 +22,8 @@ import { DetailsStadiumComponent } from './pages/stadium/details-stadium/details
 import { TeamsComponent } from './pages/team/teams/teams.component';
 import { CreateTeamComponent } from './pages/team/create-team/create-team.component';
 import { DetailsTeamComponent } from './pages/team/details-team/details-team.component';
+import { JwtInterceptor } from './interceptor/jwt.interceptor';
+import { RequestMatchComponent } from './pages/match/request-match/request-match.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { DetailsTeamComponent } from './pages/team/details-team/details-team.com
     DetailsStadiumComponent,
     TeamsComponent,
     CreateTeamComponent,
-    DetailsTeamComponent
+    DetailsTeamComponent,
+    RequestMatchComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,13 @@ import { DetailsTeamComponent } from './pages/team/details-team/details-team.com
     AppRoutingModule
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

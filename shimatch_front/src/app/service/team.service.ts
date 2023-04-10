@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Team } from '../model/Team';
+import { User } from '../model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,9 @@ export class TeamService {
 
   hasTeam(email: string): Observable<Boolean> {
     return this.http.get<Boolean>("http://localhost:8080/api/team/hasTeam/" + email);
+  }
+
+  getCapitaine(id: number): Observable<any> {
+    return this.http.get<User>("http://localhost:8080/api/team/getCapitaine/" + id);
   }
 }
