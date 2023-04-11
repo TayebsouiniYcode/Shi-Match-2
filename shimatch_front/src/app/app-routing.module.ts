@@ -19,8 +19,8 @@ import { RequestMatchComponent } from './pages/match/request-match/request-match
 import { MatchsComponent } from './pages/match/matchs/matchs.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent},
+  { path: '', component: LoginComponent },
+  { path: 'home', component: LoginComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: "dashboard" , component: DashboardComponent, canActivate: [AuthGuard]},
